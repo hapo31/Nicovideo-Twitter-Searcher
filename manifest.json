@@ -1,0 +1,16 @@
+{
+    "manifest_version": 2,
+    "name": "動画をTwitterで検索くん",
+    "description": "マイページでボタンを押すと検索するよ",
+    "version": "1.0",
+    "content_scripts": [
+        {
+            "matches": [
+                "http://www.nicovideo.jp/my/mylist/*"
+            ],
+            "js": ["scripts/script.js"]
+        }
+    ],
+    "permissions": [
+    ]
+}
