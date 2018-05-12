@@ -6,19 +6,18 @@
     console.error("トークン取れなかった");
     return;
   }
-  if (matches.length > 0) {
-    const mylistId = matches[1];
-    const res = await getMylistItems(token, mylistId);
-    const videos = res.mylistitem.map(v => v.item_data.video_id);
-    const header = document.querySelector("#myContHead");
-    const btn = document.createElement("button");
-    btn.innerText = "マイリストをTwitterで検索";
-    btn.onclick = () => {
-      window.open(buildTwitterSearchQuery(videos));
-    };
+  const mylistId = matches != null ? matches[1] : null;
+  const res = await getMylistItems(token, mylistId);
+  const videos = res.mylistitem.map(v => v.item_data.video_id);
+  const header = document.querySelector("#myContHead");
+  const btn = document.createElement("button");
+  btn.innerText = "マイリストをTwitterで検索";
+  btn.onclick = () => {
+    window.open(buildTwitterSearchQuery(videos));
+  };
 
-    header.appendChild(btn);
-  }
+  header.appendChild(btn);
+
 })();
 
 function getToken() {
